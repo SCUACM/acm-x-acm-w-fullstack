@@ -1,5 +1,5 @@
 # Intro to Backend: API's + Flask
-In this part of the workshop, set up your own Flask server and integrate it with your React front end from the previous workshop. ![Reference slides][Workshop Slides](./ACM-W 2026 API + Flask Workshop.pdf)
+In this part of the workshop, set up your own Flask server and integrate it with your React front end from the previous workshop. [Workshop Slides](ACM-W 2026 API + Flask Workshop.pdf)
 
 
 ## Simple API call example
