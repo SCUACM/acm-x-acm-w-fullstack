@@ -116,7 +116,7 @@ users = [
 * The function returns user data as JSON.
 * Accessing /users sends back a list of users.
 
-The rest of the routes should follow a similar formula.
+The rest of the routes should follow a similar formula (refer to the complete app.py file)
 
 ### Launch your server
 ```
