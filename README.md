@@ -1,5 +1,6 @@
 # Intro to Backend: API's + Flask
-In this part of the workshop, set up your own Flask server and integrate it with your React front end from the previous workshop. ![Reference slides](./ACM-W 2026 API + Flask Workshop.pdf)
+In this part of the workshop, set up your own Flask server and integrate it with your React front end from the previous workshop. ![Reference slides][Workshop SLides](ACM-W 2026 API + Flask Workshop.pdf)
+
 
 ## Simple API call example
 simple.py contains a very basic GET request with a fake API (https://jsonplaceholder.typicode.com/). This is not a part of the project, but for you to understand a simple example where the client is our Python code requesting data from a resource.
