@@ -110,6 +110,11 @@ users = [
     def get_users(): 
         return jsonify(users)
 ```
+* This code defines a simple API endpoint. 
+* @app.route("/users", methods=["GET"]) specifies the URL path and HTTP method.
+* get_users() is the function that runs when the route is accessed. 
+* The function returns user data as JSON.
+* Accessing /users sends back a list of users.
 
 The rest of the routes should follow a similar formula.
 
