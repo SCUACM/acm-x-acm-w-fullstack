@@ -1,4 +1,10 @@
 from flask import Flask, jsonify, request, send_from_directory
+import firebase_admin
+from firebase_admin import credentials, firestore
+
+cred = credentials.Certificate("credentials.json")
+firebase_admin.initialize_app(cred)
+db = firebase_admin.firestore.client()
 
 app = Flask(__name__, static_folder="../clicker/dist", static_url_path="/")
 
