@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+const url = "https://YOUR-DOMAIN-HERE"
 export default function Counter({ showHistory, showControls }) {
   const [count, setCount] = useState(0);
   const [history, setHistory] = useState([]);
@@ -8,12 +9,26 @@ export default function Counter({ showHistory, showControls }) {
     const next = count + 1;
     setCount(next);
     setHistory([...history, next]);
+    fetch(`${url}/firebase/set`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({current_value: next, history: [...history, next]})
+    });
   };
 
   const decrement = () => {
     const next = count - 1;
     setCount(next);
     setHistory([...history, next]);
+    fetch(`${url}/firebase/set`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({current_value: next, history: [...history, next]}),
+    });
   };
 
   // -------------------------------
@@ -21,10 +36,18 @@ export default function Counter({ showHistory, showControls }) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8080/users") // your Flask API
+    fetch(`${url}/firebase/set`)
       .then((res) => res.json())
       .then(setUsers)
       .catch((err) => console.error("Failed to fetch users:", err));
+    fetch(`${url}/firebase/get`)
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.current_value !== undefined && data.history !== undefined) {
+                setCount(data.current_value)
+                setHistory(data.history)
+            }
+        })
   }, []);
   // -------------------------------
 

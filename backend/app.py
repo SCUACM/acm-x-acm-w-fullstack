@@ -64,5 +64,21 @@ def delete_user(user_id):
     users = [u for u in users if u["id"] != user_id]
     return jsonify({"message": "User deleted"}), 200
 
+
+@app.route("/firebase/get", methods=["GET"])
+def firebase_get():
+    doc = db.collection("clicker").document("counter").get()
+    if doc.exists:
+        return jsonify(doc.to_dict())
+    return jsonify({"error": "not found"}), 404
+
+
+@app.route("/firebase/set", methods=["POST"])
+def firebase_set():
+    data = request.get_json()
+    print(data)
+    db.collection("clicker").document("counter").set(data)
+    return jsonify({"message": "success"}), 201
+
 if __name__ == "__main__":
     app.run(port=8080,debug=True)
