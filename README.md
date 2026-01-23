@@ -2,7 +2,9 @@
 
 Learning how to use the Google's FireStore database to store infromation sent from your frontend through API calls.
 
----
+- [Frontend: React Front End Development](https://github.com/SCUACM/acm-x-acm-w-fullstack/tree/1-20-react)
+- [Backend: Intro to Flask & APIS](https://github.com/SCUACM/acm-x-acm-w-fullstack/tree/1-21-api)
+- [Backend: Intro to Firebase](https://github.com/SCUACM/acm-x-acm-w-fullstack/tree/1-22-db)
 
 ## Prerequisites
 1. Download this project as zip by clicking on the green `code` button and selecting `Download ZIP`
