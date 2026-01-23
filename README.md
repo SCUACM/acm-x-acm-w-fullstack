@@ -48,7 +48,7 @@ Learning how to use the Google's FireStore database to store infromation sent fr
 - Copy this into your app.py file
 
 - OR copy here:
-```bash
+```py
 import firebase_admin
 from firebase_admin import credentials
 
@@ -56,7 +56,7 @@ cred = credentials.Certificate("path/to/serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 ```
 - You can update the import line to include FireStore as so:
-```bash
+```py
 import firebase_admin
 from firebase_admin import credentials, firestore
 ```
@@ -81,17 +81,26 @@ from firebase_admin import credentials, firestore
         - Edition: Standard Edition
         - Location: nam5 (United States)
         - Mode: Test Mode
+
+- Create your first collection!
+    - Name your collection 'clicker'
+    - Create your document 'counter'
+        - Usually, you would generate a random ID, but for the purposes of this workshop we will name it this
+    - Create your first field 'current_value' as a number
+    - Create your second field 'history' as an array
+        - Delete the first field of the array so that it becomes empty
+
 ---
 ### Begin coding
 - First, we are going to work in our app.py file to implement the following functions
 1. Initialize the database 
-```bash
+```py
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 ```
 
 2. Add a GET method for our history
-```bash
+```py
 @app.route("/firebase/get" , methods=["GET"])
 def firebase_get():
     db = firestore.client()
@@ -102,7 +111,7 @@ def firebase_get():
 ```
 
 3. Add a POST method for our history
-```bash
+```py
 @app.route("/firebase/set", methods=["POST"])
 def firebase_set():
     data = request.get_json()
@@ -110,8 +119,8 @@ def firebase_set():
     db.collection("clicker").document("counter").set(data)
     return jsonify({"message": "Data updated successfully"}), 200
 ```
-4. Last, make sure you have the closing statement for your flask __ to run
-```bash
+4. Last, make sure you have the closing statement for flask app to run
+```py
 if __name__ == "__main__":
     app.run(port=8080,debug=True)
 ```
@@ -119,7 +128,7 @@ if __name__ == "__main__":
 - Second, we are going to work in the counter.jsx file to tie these functions into our frontend
 1. Update the Increment Function
 Our orignal function
-```bash
+```jsx
   const increment = () => {
     const next = count + 1;
     setCount(next);
@@ -127,7 +136,7 @@ Our orignal function
   };
 ```
 will become
-```bash
+```jsx
 const increment = () => {
     const next = count + 1;
     setCount(next);
@@ -144,7 +153,7 @@ const increment = () => {
 
 2. Update the Decrement Function
 Our original function
-```bash
+```jsx
     const decrement = () => {
     const next = count - 1;
     setCount(next);
@@ -152,7 +161,7 @@ Our original function
   };
 ```
 will become 
-```bash
+```jsx
 const decrement = () => {
     const next = count - 1;
     setCount(next);
@@ -168,7 +177,7 @@ const decrement = () => {
 ```
 
 3. Last, we will tie the 'users' GET and POST functions we initialized in our last workshop to our frontend
-```bash
+```jsx
 const [users, setUsers] = useState([]);
 
   useEffect(() => {
